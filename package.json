@@ -1,0 +1,24 @@
+{
+  "name": "backend-crud",
+  "version": "1.0.0",
+  "description": "Basics of backend using Node and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiwani08/Backend-CRUD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shiwani08/Backend-CRUD/issues"
+  },
+  "homepage": "https://github.com/shiwani08/Backend-CRUD#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
