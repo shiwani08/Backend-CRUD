@@ -2,20 +2,28 @@ import express from "express";
 import mongoose from "mongoose";
 import productRoute from "./routes/products.routes.js";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
 const app = express();
-const router = express.Router();
+
+// ✅ Get __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // middleware configuration
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
+
+// ✅ Serve the frontend files from "public" folder
+app.use(express.static(path.join(__dirname, "public")));
 
 // routes 
-app.use("/api/products", productRoute)
+app.use("/api/products", productRoute);
 
-// better practice - to connect to the db first and then start the server
+// DB connection and start server
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
