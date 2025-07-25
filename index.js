@@ -1,6 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import productRoute from "./routes/products.routes.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const router = express.Router();
@@ -14,9 +17,7 @@ app.use("/api/products", productRoute)
 
 // better practice - to connect to the db first and then start the server
 mongoose
-  .connect(
-    "mongodb+srv://shiwanisoni:9TQRXPxSRPP94ds6@cluster0.yirabil.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("Connected to the database!");
 
